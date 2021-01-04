@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/usermsg_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        card_view:cardCornerRadius="20dp"
+        card_view:cardElevation="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@mipmap/search" />
+
+            <AutoCompleteTextView
+                android:id="@+id/search_bookmsg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:hint="请输入图书名称或作者信息"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="#505252"
+                android:background="#73FFFFFF"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <!-- 流布局中的属性-->
+    <com.yhy.librarysystem.FlowTagGroup
+        android:id="@+id/categoryListview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+    </com.yhy.librarysystem.FlowTagGroup>
+
+    <ListView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/bookListview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/search_book_attribute">
+
+    </ListView>
+
+
+</LinearLayout>
