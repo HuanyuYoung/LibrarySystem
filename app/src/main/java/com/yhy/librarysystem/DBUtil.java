@@ -15,17 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DBUtil {
-
-//    private static String driver = "com.mysql.jdbc.Driver";// MySql驱动
-//    private static String user = "root";// 用户名
-//    private static String password = "wayhya0*";// 密码
-//
-//    private static String dbName="libararysystem";
     private static String booktable="book";
     private static String usertable="reader";
     private static String borrowtable="note";
-
-
     /**
      * 数据库连接
      * @return
@@ -44,15 +36,6 @@ public class DBUtil {
             if(con != null) {
                 System.out.println("chenggong");
             }
-//
-//            Class.forName(driver);// 动态加载类
-//            String ip = "192.168.43.2";// 写成本机地址，不能写成localhost，同时手机和电脑连接的网络必须是同一个
-//            // 尝试建立到给定数据库URL的连接
-//            con = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/" + dbname, user, password);
-//            if(con != null) {
-//                System.out.println("chenggong");
-//            }
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -96,18 +79,9 @@ public class DBUtil {
                                 return true;
                             }else{ return false;}
                         }
-                    }else {
-                        connection.close();
-                        ps.close();
-                        return false; }
-                }else {
-                    connection.close();
-                    ps.close();
-                    return  false; }
-            }else {
-                Log.e("DBUtils","连接失败");
-                return  false;
-            }
+                    }else { connection.close(); ps.close();  return false; }
+                }else {  connection.close();  ps.close();  return  false; }
+            }else { Log.e("DBUtils","连接失败");  return  false; }
         }catch (Exception e){
             e.printStackTrace();
             Log.e("DBUtils","异常：" + e.getMessage());
@@ -136,18 +110,9 @@ public class DBUtil {
                         connection.close();
                         ps.close();
                         return category;
-                    }else {
-                        connection.close();
-                        ps.close();
-                        return null; }
-                }else {
-                    connection.close();
-                    ps.close();
-                    return  null; }
-            }else {
-                Log.e("DBUtils","连接失败");
-                return  null;
-            }
+                    }else { connection.close();  ps.close(); return null; }
+                }else { connection.close();  ps.close(); return  null; }
+            }else { Log.e("DBUtils","连接失败"); return  null; }
         }catch (Exception e){
             e.printStackTrace();
             Log.e("DBUtils","异常：" + e.getMessage());
@@ -191,14 +156,8 @@ public class DBUtil {
                         connection.close();
                         ps.close();
                         return  borrow;
-                    }else {
-                        connection.close();
-                        ps.close();
-                        return null; }
-                }else {
-                    connection.close();
-                    ps.close();
-                    return  null; }
+                    }else {  connection.close(); ps.close(); return null; }
+                }else { connection.close(); ps.close();  return  null; }
             }else { return  null; }
         }catch (Exception e){
             e.printStackTrace();
@@ -209,7 +168,7 @@ public class DBUtil {
 
     /**
      * 图书名称、作者模糊查找图书信息
-     * @param key 用户名
+     * @param key 搜索关键字
      * @return
      */
     public static List<Book> getBookMsg(String key){
@@ -242,14 +201,8 @@ public class DBUtil {
                         connection.close();
                         ps.close();
                         return  book;
-                    }else {
-                        connection.close();
-                        ps.close();
-                        return null; }
-                }else {
-                    connection.close();
-                    ps.close();
-                    return  null; }
+                    }else { connection.close(); ps.close(); return null; }
+                }else { connection.close(); ps.close(); return  null; }
             }else { return  null; }
         }catch (Exception e){
             e.printStackTrace();
@@ -260,7 +213,7 @@ public class DBUtil {
 
     /**
      * 图书类型查找图书信息
-     * @param key 用户名
+     * @param key 图书类型
      * @return
      */
     public static List<Book> getBookMsgBycategory(String key){
@@ -292,14 +245,8 @@ public class DBUtil {
                         connection.close();
                         ps.close();
                         return  book;
-                    }else {
-                        connection.close();
-                        ps.close();
-                        return null; }
-                }else {
-                    connection.close();
-                    ps.close();
-                    return  null; }
+                    }else { connection.close();  ps.close(); return null; }
+                }else { connection.close(); ps.close(); return  null; }
             }else { return  null; }
         }catch (Exception e){
             e.printStackTrace();
@@ -312,6 +259,7 @@ public class DBUtil {
     /**
      * 增加借书记录
      * @param id 图书编号
+     * @para bookname 图书名
      * @return
      */
     public static boolean addBorrowRecord(int id,String bookname) {
@@ -330,15 +278,8 @@ public class DBUtil {
                     connection.close();
                     ps.close();
                     return true;
-                } else {
-                    connection.close();
-                    ps.close();
-                    return false;
-                }
-            } else {
-                connection.close();
-                return false;
-            }
+                } else {  connection.close(); ps.close(); return false;  }
+            } else {  connection.close();  return false; }
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("DBUtils", "异常：" + e.getMessage());
@@ -363,14 +304,8 @@ public class DBUtil {
                     connection.close();
                     ps.close();
                     return true;
-                } else {
-                    connection.close();
-                    ps.close();
-                    return false;
-                }
-            } else {
-                return false;
-            }
+                } else { connection.close(); ps.close(); return false; }
+            } else { return false; }
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("DBUtils", "异常：" + e.getMessage());
@@ -380,7 +315,6 @@ public class DBUtil {
 
     /**
      * 归还图书
-     * @param bookid 图书编号
      * @return
      */
     public static boolean backBook(int userid,int bookid, String borrowdate) {
@@ -398,14 +332,8 @@ public class DBUtil {
                     connection.close();
                     ps.close();
                     return true;
-                } else {
-                    connection.close();
-                    ps.close();
-                    return false;
-                }
-            } else {
-                return false;
-            }
+                } else { connection.close();  ps.close();  return false;  }
+            } else { return false; }
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("DBUtils", "异常：" + e.getMessage());
@@ -431,14 +359,8 @@ public class DBUtil {
                     connection.close();
                     ps.close();
                     return true;
-                } else {
-                    connection.close();
-                    ps.close();
-                    return false;
-                }
-            } else {
-                return false;
-            }
+                } else {  connection.close(); ps.close(); return false; }
+            } else { return false; }
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("DBUtils", "异常：" + e.getMessage());

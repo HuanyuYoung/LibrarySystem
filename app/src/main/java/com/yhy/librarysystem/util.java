@@ -11,6 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 工具类
+ */
+
 public class util {
 
     //存储用户信息

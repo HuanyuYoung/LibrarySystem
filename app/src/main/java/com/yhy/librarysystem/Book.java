@@ -1,10 +1,12 @@
 package com.yhy.librarysystem;
-
+/**
+ * 图书类
+ */
 public class Book {
 
-    private  Double price;
-    private int id,num;
-    private String name,category,author;
+    private  Double price; //书价格
+    private int id,num;    //书ID、现存数量
+    private String name,category,author;   //书名、类型、作者
 
     public Book(){
     }
